@@ -16,7 +16,7 @@ const Footer = () => {
           <a href='mailto:anandrajbind35@gmail.com'>
             <HiOutlineMail size={30} className='hover:text-secondary transition-colors' />
           </a>
-          <a href='https://drive.google.com/file/d/1T6n_gCkIo0RW3Cx1AJOmieabzzBqjlnM/view?usp=drivesdk' target='_blank' rel='noreferrer'>
+          <a href='https://drive.google.com/file/d/1t1jlmSJmndlF5dbNP49923NtAy5JAwb8/view?usp=drivesdk' target='_blank' rel='noreferrer'>
             <FaFileAlt size={30} className='hover:text-secondary transition-colors' />
           </a>
         </div>
@@ -24,7 +24,7 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} Anand Raj Bind. All rights reserved.
         </p>
         <div className='flex space-x-4 mt-2'>
-          <a href="https://drive.google.com/file/d/1T6n_gCkIo0RW3Cx1AJOmieabzzBqjlnM/view?usp=drivesdk" 
+          <a href="https://drive.google.com/file/d/1t1jlmSJmndlF5dbNP49923NtAy5JAwb8/view?usp=drivesdk" 
              target="_blank" 
              rel="noreferrer"
              className="hover:text-secondary transition-colors">
