@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme variables */
+    --primary: #ffffff;
+    --secondary: #0ea5e9; /* sky-500 */
+    --lightText: #020617; /* slate-950 */
+    --darkText: #64748b; /* slate-500 */
+  }
+
+  .dark {
+    /* Dark theme variables */
+    --primary: #0f172a; /* slate-900 */
+    --secondary: #38bdf8; /* sky-400 */
+    --lightText: #f8fafc; /* slate-50 */
+    --darkText: #94a3b8; /* slate-400 */
+  }
+
+  html {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-primary text-lightText;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl;
+  }
+  
+  li {
+    @apply cursor-pointer;
+  }
+
+  button {
+    @apply shadow-xl shadow-gray-800 rounded-xl uppercase bg-gradient-to-r from-secondary to-[#00d8ff] text-primary;
+  }
+}
+
+.content-div {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+}
+
+.content-div:hover {
+  background-image: linear-gradient(
+    to right,
+    rgba(100, 255, 218, 0.8),
+    rgba(0, 216, 255, 0.8)
+  )!important;
+}
