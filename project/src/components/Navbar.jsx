@@ -8,7 +8,7 @@ const Navbar = () => {
   const handleClick = () => setNav(!nav);
 
   return (
-    <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-primary text-lightText z-10'>
+    <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-primary text-lightText z-50 shadow-sm'>
       <div>
         <h1 className='text-2xl font-bold text-secondary'>Anand Raj Bind</h1>
       </div>

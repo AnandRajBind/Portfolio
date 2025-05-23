@@ -8,7 +8,7 @@ const Hero = () => {
   const { isDarkMode } = useContext(ThemeContext);
 
   return (
-    <div name='home' className='w-full h-screen'>
+    <div name='home' className='w-full h-screen pt-[80px]'>
       <div className='max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full'>
         <div className='flex flex-col md:flex-row md:items-center'>
           <div className='md:w-2/3'>

@@ -1,0 +1,89 @@
+/* Swiper carousel styling */
+.swiper {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet {
+  background-color: #915EFF;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #915EFF;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 18px;
+  }
+}
+
+/* Adjust the project card styles for carousel */
+.swiper-slide .project-card {
+  height: 100%;
+  width: 100%;
+}
+
+/* Enhanced Social Media Cards */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.social-card-container {
+  position: fixed;
+  left: 0;
+  top: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.social-card-container a {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-card-container a:hover {
+  transform: translateX(5px) scale(1.05);
+  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
+  animation: pulse 1.5s infinite;
+}
+
+.social-card-container a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.social-card-container a:hover::before {
+  left: 100%;
+}
