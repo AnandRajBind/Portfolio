@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import { initEmailJS } from '../utils/emailjs'; // <-- import utility
 
 const Contact = () => {
   const formRef = useRef();
@@ -14,13 +15,18 @@ const Contact = () => {
   const [error, setError] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [formFocus, setFormFocus] = useState(null);
+  const [isTyping, setIsTyping] = useState(false);
+  const [ripples, setRipples] = useState([]);
+  const [cursorTrail, setCursorTrail] = useState([]);
 
+  // Enhanced particle system with multiple types
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
     let animationFrameId;
+    let time = 0;
     
     const handleResize = () => {
       canvas.width = canvas.offsetWidth;
@@ -39,77 +45,133 @@ const Contact = () => {
     window.addEventListener('resize', handleResize);
     handleResize();
     
-    // Floating particles for contact section
-    const particles = [];
-    const numberOfParticles = 50;
-    
-    class ContactParticle {
-      constructor() {
+    // Advanced particle system
+    class AdvancedParticle {
+      constructor(type = 'default') {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = (Math.random() - 0.5) * 1;
-        this.speedY = (Math.random() - 0.5) * 1;
-        this.color = `hsl(${280 + Math.random() * 40}, 70%, 60%)`;
-        this.alpha = Math.random() * 0.5 + 0.3;
+        this.type = type;
+        this.life = 1;
+        this.maxLife = 100 + Math.random() * 100;
+        
+        switch(type) {
+          case 'spark':
+            this.size = Math.random() * 2 + 1;
+            this.speedX = (Math.random() - 0.5) * 4;
+            this.speedY = (Math.random() - 0.5) * 4;
+            this.color = `hsl(${45 + Math.random() * 30}, 100%, 70%)`;
+            break;
+          case 'glow':
+            this.size = Math.random() * 8 + 4;
+            this.speedX = (Math.random() - 0.5) * 0.5;
+            this.speedY = (Math.random() - 0.5) * 0.5;
+            this.color = `hsl(${280 + Math.random() * 40}, 70%, 60%)`;
+            break;
+          default:
+            this.size = Math.random() * 3 + 1;
+            this.speedX = (Math.random() - 0.5) * 2;
+            this.speedY = (Math.random() - 0.5) * 2;
+            this.color = `hsl(${260 + Math.random() * 60}, 70%, 60%)`;
+        }
       }
       
       update() {
-        // Attraction to mouse
+        this.life++;
+        
+        // Mouse interaction with enhanced effects
         const dx = mousePosition.x - this.x;
         const dy = mousePosition.y - this.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         
-        if (distance < 100) {
-          this.x += dx * 0.01;
-          this.y += dy * 0.01;
+        if (distance < 150) {
+          const force = (150 - distance) / 150;
+          this.x += (dx * force * 0.02);
+          this.y += (dy * force * 0.02);
+          
+          if (this.type === 'default' && Math.random() < 0.1) {
+            particles.push(new AdvancedParticle('spark'));
+          }
         }
         
-        this.x += this.speedX;
-        this.y += this.speedY;
+        this.x += this.speedX + Math.sin(time * 0.01) * 0.5;
+        this.y += this.speedY + Math.cos(time * 0.015) * 0.5;
         
-        // Wrap around edges
+        // Boundary wrapping
         if (this.x > canvas.width) this.x = 0;
         if (this.x < 0) this.x = canvas.width;
         if (this.y > canvas.height) this.y = 0;
         if (this.y < 0) this.y = canvas.height;
+        
+        return this.life < this.maxLife;
       }
       
       draw() {
-        ctx.save();
-        ctx.globalAlpha = this.alpha;
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
+        const alpha = 1 - (this.life / this.maxLife);
+        
+        if (this.type === 'glow') {
+          const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+          gradient.addColorStop(0, this.color.replace('60%', '70%').replace(')', `, ${alpha})`));
+          gradient.addColorStop(0.5, this.color.replace('60%', '50%').replace(')', `, ${alpha * 0.5})`));
+          gradient.addColorStop(1, 'transparent');
+          
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.save();
+          ctx.globalAlpha = alpha;
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
       }
     }
     
-    // Initialize particles
-    for (let i = 0; i < numberOfParticles; i++) {
-      particles.push(new ContactParticle());
+    const particles = [];
+    for (let i = 0; i < 40; i++) {
+      particles.push(new AdvancedParticle('default'));
+    }
+    for (let i = 0; i < 15; i++) {
+      particles.push(new AdvancedParticle('glow'));
     }
     
-    // Animation loop
     const animate = () => {
+      time++;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      particles.forEach(particle => {
-        particle.update();
-        particle.draw();
-      });
+      // Update and filter particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        if (!particles[i].update()) {
+          particles.splice(i, 1);
+        } else {
+          particles[i].draw();
+        }
+      }
       
-      // Draw connections between nearby particles
+      // Maintain particle count
+      while (particles.length < 55) {
+        particles.push(new AdvancedParticle(Math.random() < 0.7 ? 'default' : 'glow'));
+      }
+      
+      // Enhanced connection system
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
-          if (distance < 80) {
-            ctx.strokeStyle = `rgba(147, 51, 234, ${0.3 * (1 - distance / 80)})`;
-            ctx.lineWidth = 1;
+          if (distance < 100) {
+            const opacity = (100 - distance) / 100;
+            const gradient = ctx.createLinearGradient(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+            gradient.addColorStop(0, `rgba(147, 51, 234, ${opacity * 0.4})`);
+            gradient.addColorStop(0.5, `rgba(59, 130, 246, ${opacity * 0.6})`);
+            gradient.addColorStop(1, `rgba(147, 51, 234, ${opacity * 0.4})`);
+            
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = opacity * 2;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -130,9 +192,33 @@ const Contact = () => {
     };
   }, [mousePosition]);
 
+  // Ensure EmailJS is initialized only once
+  useEffect(() => {
+    initEmailJS();
+  }, []);
+
+  // Enhanced typing detection
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
+    setIsTyping(true);
+    
+    setTimeout(() => setIsTyping(false), 1000);
+  };
+
+  // Ripple effect on click
+  const createRipple = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const ripple = {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+      id: Date.now()
+    };
+    
+    setRipples(prev => [...prev, ripple]);
+    setTimeout(() => {
+      setRipples(prev => prev.filter(r => r.id !== ripple.id));
+    }, 1000);
   };
 
   const handleSubmit = (e) => {
@@ -149,7 +235,7 @@ const Contact = () => {
     if (!serviceId || !templateId || !publicKey) {
       console.error('Missing EmailJS configuration values');
       setLoading(false);
-      setError('Email configuration error. Please contact the administrator.');
+      setError('Email service is not configured properly. Please try again later or contact me directly at anandrajbind35@gmail.com.');
       return;
     }
     
@@ -172,111 +258,165 @@ const Contact = () => {
 
   return (
     <div name='contact' className='w-full section-min-height bg-primary section-padding flex justify-center items-center p-4 relative overflow-hidden'>
-      {/* Animated background canvas */}
+      {/* Enhanced background with multiple layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900"></div>
+      
+      {/* Animated grid background */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-grid-pattern animate-grid-move"></div>
+      </div>
+      
       <canvas 
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none z-0"
+        className="absolute inset-0 w-full h-full pointer-events-none z-[1]"
       />
       
-      {/* Floating geometric shapes */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-20 left-10 w-20 h-20 border-2 border-purple-400/20 rounded-lg animate-spin-slow" />
-        <div className="absolute bottom-32 right-20 w-16 h-16 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-full contact-float" />
-        <div className="absolute top-1/2 left-20 w-12 h-1 bg-gradient-to-r from-transparent via-purple-400/40 to-transparent animate-pulse" />
+      {/* Advanced floating elements */}
+      <div className="absolute inset-0 pointer-events-none z-[2]">
+        <div className="floating-orb floating-orb-1"></div>
+        <div className="floating-orb floating-orb-2"></div>
+        <div className="floating-orb floating-orb-3"></div>
+        <div className="floating-code floating-code-1">{'<contact/>'}</div>
+        <div className="floating-code floating-code-2">{'{ ...form }'}</div>
+        <div className="floating-code floating-code-3">{'send()'}</div>
       </div>
 
-      <div className='max-w-[600px] mx-auto relative z-10 contact-fade-in'>
-        <div className='pb-8'>
-          <p className='text-4xl font-bold inline border-b-4 border-secondary text-lightText contact-title-hover'>
-            Contact
-          </p>
-          <p className='text-lightText py-4 contact-subtitle-fade'>
-            Submit the form below or send me an email - anandrajbind35@gmail.com
-          </p>
-        </div>
-        
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className='flex flex-col gap-6 relative contact-form-fade'
-        >
-          <label className='flex flex-col relative contact-field-hover'>
-            <span className='text-white font-medium mb-4 relative z-10'>Your Name</span>
-            <input
-              type='text'
-              name='name'
-              value={form.name}
-              onChange={handleChange}
-              onFocus={() => setFormFocus('name')}
-              onBlur={() => setFormFocus(null)}
-              placeholder="What's your name?"
-              className={`contact-input bg-tertiary py-4 px-6 placeholder:text-secondary text-black rounded-lg outlined-none border-none font-medium relative z-10 transition-all duration-300 ${formFocus === 'name' ? 'contact-input-focus' : ''}`}
-              required
-            />
-            {formFocus === 'name' && (
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-lg contact-glow-fade" />
-            )}
-          </label>
+      {/* Main content with glassmorphism */}
+      <div className='max-w-[700px] mx-auto relative z-10'>
+        <div className='backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 shadow-2xl contact-container'>
+          <div className='pb-8 text-center'>
+            <h2 className='text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4 contact-title-enhanced'>
+              Let's Connect
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 mx-auto rounded-full mb-6 title-underline"></div>
+            <p className='text-gray-300 text-lg leading-relaxed'>
+              Ready to bring your ideas to life? Drop me a message and let's create something amazing together.
+            </p>
+          </div>
           
-          <label className='flex flex-col relative contact-field-hover'>
-            <span className='text-white font-medium mb-4 relative z-10'>Your Email</span>
-            <input
-              type='email'
-              name='email'
-              value={form.email}
-              onChange={handleChange}
-              onFocus={() => setFormFocus('email')}
-              onBlur={() => setFormFocus(null)}
-              placeholder="What's your email?"
-              className={`contact-input bg-tertiary py-4 px-6 placeholder:text-secondary text-black rounded-lg outlined-none border-none font-medium relative z-10 transition-all duration-300 ${formFocus === 'email' ? 'contact-input-focus' : ''}`}
-              required
-            />
-            {formFocus === 'email' && (
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-lg contact-glow-fade" />
-            )}
-          </label>
-          
-          <label className='flex flex-col relative contact-field-hover'>
-            <span className='text-white font-medium mb-4 relative z-10'>Your Message</span>
-            <textarea
-              rows='7'
-              name='message'
-              value={form.message}
-              onChange={handleChange}
-              onFocus={() => setFormFocus('message')}
-              onBlur={() => setFormFocus(null)}
-              placeholder="What do you want to say?"
-              className={`contact-input bg-tertiary py-4 px-6 placeholder:text-secondary text-black rounded-lg outlined-none border-none font-medium relative z-10 transition-all duration-300 resize-none ${formFocus === 'message' ? 'contact-input-focus' : ''}`}
-              required
-            />
-            {formFocus === 'message' && (
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-lg contact-glow-fade" />
-            )}
-          </label>
-          
-          <button
-            type='submit'
-            className={`contact-button bg-gradient-to-r from-purple-500 to-blue-500 py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl relative overflow-hidden transition-all duration-300 ${loading ? 'contact-button-loading' : ''}`}
-            disabled={loading}
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className='space-y-8'
           >
-            <span className="relative z-10">
-              {loading ? 'Sending...' : 'Send Message'}
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 contact-button-slide" />
-          </button>
-          
-          {success && (
-            <p className='text-green-400 font-medium mt-2 p-4 success-message rounded-lg contact-message-slide'>
-              ✨ Thank you! I will get back to you as soon as possible.
-            </p>
-          )}
-          
-          {error && (
-            <p className='text-red-400 font-medium mt-2 p-4 error-message rounded-lg contact-message-slide'>
-              ❌ {error}
-            </p>
-          )}
-        </form>
+            {/* Enhanced form fields */}
+            <div className='grid md:grid-cols-2 gap-6'>
+              <div className='form-group'>
+                <label className='form-label'>
+                  <span className='label-text'>Full Name</span>
+                  <div className='input-container'>
+                    <input
+                      type='text'
+                      name='name'
+                      value={form.name}
+                      onChange={handleChange}
+                      onFocus={() => setFormFocus('name')}
+                      onBlur={() => setFormFocus(null)}
+                      placeholder="John Doe"
+                      className='enhanced-input'
+                      required
+                    />
+                    <div className={`input-border ${formFocus === 'name' ? 'active' : ''}`}></div>
+                  </div>
+                </label>
+              </div>
+              
+              <div className='form-group'>
+                <label className='form-label'>
+                  <span className='label-text'>Email Address</span>
+                  <div className='input-container'>
+                    <input
+                      type='email'
+                      name='email'
+                      value={form.email}
+                      onChange={handleChange}
+                      onFocus={() => setFormFocus('email')}
+                      onBlur={() => setFormFocus(null)}
+                      placeholder="john@example.com"
+                      className='enhanced-input'
+                      required
+                    />
+                    <div className={`input-border ${formFocus === 'email' ? 'active' : ''}`}></div>
+                  </div>
+                </label>
+              </div>
+            </div>
+            
+            <div className='form-group'>
+              <label className='form-label'>
+                <span className='label-text'>Your Message</span>
+                <div className='input-container'>
+                  <textarea
+                    rows='6'
+                    name='message'
+                    value={form.message}
+                    onChange={handleChange}
+                    onFocus={() => setFormFocus('message')}
+                    onBlur={() => setFormFocus(null)}
+                    placeholder="Tell me about your project..."
+                    className='enhanced-input resize-none'
+                    required
+                  />
+                  <div className={`input-border ${formFocus === 'message' ? 'active' : ''}`}></div>
+                </div>
+              </label>
+            </div>
+            
+            {/* Enhanced submit button */}
+            <div className='text-center'>
+              <button
+                type='submit'
+                onClick={createRipple}
+                className='enhanced-button'
+                disabled={loading}
+              >
+                <span className="button-content">
+                  <span className="button-icon">
+                    {loading ? '⚡' : '🚀'}
+                  </span>
+                  <span className="button-text">
+                    {loading ? 'Launching Message...' : 'Send Message'}
+                  </span>
+                </span>
+                
+                {/* Ripple effects */}
+                {ripples.map(ripple => (
+                  <span
+                    key={ripple.id}
+                    className="ripple-effect"
+                    style={{
+                      left: ripple.x,
+                      top: ripple.y,
+                    }}
+                  />
+                ))}
+                
+                <div className="button-gradient"></div>
+              </button>
+            </div>
+            
+            {/* Enhanced status messages */}
+            {success && (
+              <div className='status-message success-enhanced'>
+                <div className="status-icon">✨</div>
+                <div>
+                  <h4>Message Sent Successfully!</h4>
+                  <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
+                </div>
+              </div>
+            )}
+            
+            {error && (
+              <div className='status-message error-enhanced'>
+                <div className="status-icon">⚠️</div>
+                <div>
+                  <h4>Oops! Something went wrong</h4>
+                  <p>{error}</p>
+                </div>
+              </div>
+            )}
+          </form>
+        </div>
       </div>
     </div>
   );
