@@ -1,5 +1,7 @@
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaUserAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import { SiTailwindcss, SiMongodb, SiExpress } from 'react-icons/si';
+import { MdEmail } from 'react-icons/md';
+import { BsTranslate, BsBriefcase } from 'react-icons/bs';
 
 const About = () => {
   const skills = [
@@ -15,48 +17,130 @@ const About = () => {
   ];
 
   return (
-    <div name='about' className='w-full section-min-height bg-primary text-lightText section-padding'>
-      <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
-        {/* About Me Section */}
-        <div className='w-full grid grid-cols-2 gap-8 mb-16'>
-          <div className='sm:text-right pb-8 pl-4'>
-            <p className='text-4xl font-bold inline border-b-4 border-secondary'>
-              About Me
+    <div name='about' className='w-full section-min-height bg-primary text-lightText py-16 md:py-24'>
+      <div className='max-w-[1200px] mx-auto px-4'>
+        {/* Gradient Title */}
+        <h2 className='text-center text-5xl font-bold mb-16 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent'>
+          About Me
+        </h2>
+        
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
+          {/* Left Column - Developer Description */}
+          <div className='lg:col-span-2 bg-tertiary p-8 rounded-2xl shadow-lg'>
+            {/* Developer Title */}
+            <div className='border-l-4 border-blue-500 pl-4 mb-6'>
+              <h3 className='text-2xl font-bold text-blue-500'>Passionate Full Stack Developer</h3>
+            </div>
+            
+            {/* Main Description */}
+            <p className='text-lg mb-6'>
+              I am a passionate Full Stack Developer with expertise in cutting-edge web technologies. My
+              journey began with curiosity and has evolved into a professional career building <span className='text-blue-500 font-semibold'>robust,
+              scalable, and beautiful applications</span>.
             </p>
+            
+            <p className='text-lg mb-6'>
+              I specialize in creating <span className='text-blue-500 font-semibold'>responsive web applications</span> using React, TypeScript, and Node.js, with
+              a strong focus on <span className='text-blue-500 font-semibold'>clean architecture and optimal user experience</span>. I'm constantly learning and
+              adapting to new technologies to stay current in this ever-evolving field.
+            </p>
+            
+            {/* Skills Badges */}
+            <div className='flex flex-wrap gap-3 mt-8'>
+              <span className='bg-gray-800 text-white px-4 py-2 rounded-full text-sm'>Problem Solver</span>
+              <span className='bg-gray-800 text-white px-4 py-2 rounded-full text-sm'>Clean Code</span>
+              <span className='bg-gray-800 text-white px-4 py-2 rounded-full text-sm'>Performance Focused</span>
+              <span className='bg-gray-800 text-white px-4 py-2 rounded-full text-sm'>User-Centric</span>
+            </div>
           </div>
-          <div></div>
+          
+          {/* Right Column - Personal Details */}
+          <div className='bg-tertiary p-8 rounded-2xl shadow-lg'>
+            <h3 className='text-xl font-semibold mb-6 text-purple-500 border-l-4 border-purple-500 pl-4'>
+              Personal Details
+            </h3>
+            
+            <div className='space-y-6'>
+              {/* Name */}
+              <div className='flex items-center gap-4'>
+                <div className='bg-blue-500/20 p-3 rounded-full'>
+                  <FaUserAlt className='text-blue-500' />
+                </div>
+                <div>
+                  <p className='text-sm text-gray-400'>Name</p>
+                  <p className='text-lg'>Anand Raj Bind</p>
+                </div>
+              </div>
+              
+              {/* Location */}
+              <div className='flex items-center gap-4'>
+                <div className='bg-red-500/20 p-3 rounded-full'>
+                  <FaMapMarkerAlt className='text-red-500' />
+                </div>
+                <div>
+                  <p className='text-sm text-gray-400'>Location</p>
+                  <p className='text-lg'>Jaunpur, U.P, India</p>
+                </div>
+              </div>
+              
+              {/* Email */}
+              <div className='flex items-center gap-4'>
+                <div className='bg-green-500/20 p-3 rounded-full'>
+                  <MdEmail className='text-green-500' />
+                </div>
+                <div>
+                  <p className='text-sm text-gray-400'>Email</p>
+                  <p className='text-lg'>anandrajbind35@gmail.com</p>
+                </div>
+              </div>
+              
+              {/* Experience */}
+              <div className='flex items-center gap-4'>
+                <div className='bg-yellow-500/20 p-3 rounded-full'>
+                  <BsBriefcase className='text-yellow-500' />
+                </div>
+                <div>
+                  <p className='text-sm text-gray-400'>Experience</p>
+                  <p className='text-lg'>Fresher</p>
+                </div>
+              </div>
+              
+              {/* Languages */}
+              <div className='flex items-center gap-4'>
+                <div className='bg-purple-500/20 p-3 rounded-full'>
+                  <BsTranslate className='text-purple-500' />
+                </div>
+                <div>
+                  <p className='text-sm text-gray-400'>Languages</p>
+                  <p className='text-lg'>Hindi, English</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className='mt-8'>
+              <p className='text-center text-amber-400'>
+                ✨ Open to opportunities ✨
+              </p>
+            </div>
+          </div>
         </div>
         
-        <div className='w-full grid sm:grid-cols-2 gap-8 px-4 mb-20'>
-          <div className='sm:text-right text-4xl font-bold'>
-            <p>Hi, I'm Anand Raj Bind. Nice to meet you. Please take a look around.</p>
+        {/* Technologies Section */}
+        <div className='mt-16'>
+          <h3 className='text-2xl font-bold mb-8 border-l-4 border-green-500 pl-4'>
+            Technologies I Work With
+          </h3>
+          <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6'>
+            {skills.map((skill) => {
+              const IconComponent = skill.icon;
+              return (
+                <div key={skill.name} className='bg-tertiary p-6 rounded-xl flex flex-col items-center hover:scale-105 transition-transform'>
+                  <IconComponent className='w-12 h-12 mb-3' style={{ color: skill.color }} />
+                  <p>{skill.name}</p>
+                </div>
+              );
+            })}
           </div>
-          <div>
-            <p className='text-darkText'>
-              I'm currently pursuing MCA from St. Andrews Institute of Technology. I've always enjoyed building things that people can interact with, which naturally led me to explore web development. Over the past few years, I've gained hands-on experience in JavaScript, ReactJS, Tailwind CSS, and MongoDB through personal projects like a Snake Game, To-Do List, Number Guessing Game, and a Password Manager app.
-            </p>
-            <p className='text-darkText mt-4'>
-              I'm passionate about creating intuitive and responsive web applications that provide great user experiences. I'm constantly learning and improving my skills to become a better developer.
-            </p>
-          </div>
-        </div>
-
-        {/* Skills Section merged into About */}
-        <div className='mb-8'>
-          <p className='text-4xl font-bold inline border-b-4 border-secondary'>Skills & Technologies</p>
-          <p className='py-4'>These are the technologies I've worked with</p>
-        </div>
-
-        <div className='w-full grid grid-cols-2 sm:grid-cols-3 gap-6 text-center py-8'>
-          {skills.map((skill, index) => {
-            const IconComponent = skill.icon;
-            return (
-              <div key={skill.name} className='shadow-md shadow-[#040c16] hover:scale-110 duration-500 py-6 rounded-lg'>
-                <IconComponent className='w-20 h-20 mx-auto' style={{ color: skill.color }} />
-                <p className='my-4'>{skill.name}</p>
-              </div>
-            );
-          })}
         </div>
       </div>
     </div>

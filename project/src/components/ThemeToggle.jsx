@@ -1,17 +1,23 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 const ThemeToggle = () => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <button 
+    <button
       onClick={toggleTheme}
-      className="fixed top-20 right-4 z-30 p-2 rounded-full bg-secondary text-primary shadow-lg transition-all duration-300"
-      aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+      className="flex items-center justify-center p-2 rounded-full bg-gray-200 dark:bg-gray-800 
+                 text-yellow-500 dark:text-blue-400 transition-all duration-300 hover:ring-2 
+                 ring-yellow-400 dark:ring-blue-500"
+      aria-label="Toggle Theme"
     >
-      {isDarkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+      {isDarkMode ? (
+        <FaSun className="w-5 h-5" />
+      ) : (
+        <FaMoon className="w-5 h-5" />
+      )}
     </button>
   );
 };

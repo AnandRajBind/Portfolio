@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { FaBars, FaTimes, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { Link } from 'react-scroll';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
 
   return (
-    <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-primary text-lightText z-50 shadow-sm'>
+    <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-white dark:bg-gray-900 text-gray-800 dark:text-white z-50 transition-colors duration-300">
       <div>
         <h1 className='text-2xl font-bold text-secondary'>Anand Raj Bind</h1>
       </div>
@@ -76,6 +77,11 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
+      </div>
+
+      {/* Add theme toggle */}
+      <div className="hidden md:flex items-center">
+        <ThemeToggle />
       </div>
     </div>
   );

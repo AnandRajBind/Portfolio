@@ -1,4 +1,4 @@
-import { TypeAnimation } from 'react-type-animation';
+import { useTypewriter, Cursor } from 'react-simple-typewriter';
 import { FaArrowRight, FaFileAlt } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 import { useContext } from 'react';
@@ -6,6 +6,20 @@ import { ThemeContext } from '../context/ThemeContext';
 
 const Hero = () => {
   const { isDarkMode } = useContext(ThemeContext);
+  
+  const [typewriterText] = useTypewriter({
+    words: [
+      'Full Stack Developer',
+      'MERN Stack Enthusiast',
+      'Open Source Contributor',
+      'React Developer',
+      'UI/UX Enthusiast'
+    ],
+    loop: true,
+    delaySpeed: 2000,
+    typeSpeed: 50,
+    deleteSpeed: 30
+  });
 
   return (
     <div name='home' className='w-full h-screen pt-[80px]'>
@@ -16,21 +30,10 @@ const Hero = () => {
             <h1 className='text-4xl sm:text-7xl font-bold text-lightText'>Anand Raj Bind</h1>
             <h2 className='text-3xl sm:text-5xl font-bold text-darkText'>
               I'm a{' '}
-              <TypeAnimation
-                sequence={[
-                  'Full Stack Developer',
-                  2000,
-                  'Web Developer',
-                  2000,
-                  'React Developer',
-                  2000,
-                  
-                ]}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-                className='text-secondary'
-              />
+              <span className='text-secondary'>
+                {typewriterText}
+                <Cursor cursorStyle='|' cursorColor='#4B5563' />
+              </span>
             </h2>
             <p className='text-darkText py-4 max-w-[700px]'>
               I'm a full stack developer specializing in building exceptional digital experiences.
