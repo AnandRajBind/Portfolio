@@ -9,7 +9,7 @@ const Navbar = () => {
   const handleClick = () => setNav(!nav);
 
   return (
-    <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-white dark:bg-gray-900 text-gray-800 dark:text-white z-50 transition-colors duration-300">
+    <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-primary text-lightText z-50 shadow-sm'>
       <div>
         <h1 className='text-2xl font-bold text-secondary'>Anand Raj Bind</h1>
       </div>
@@ -24,6 +24,9 @@ const Navbar = () => {
         </li>
         <li className='px-4 cursor-pointer capitalize font-medium hover:text-secondary duration-200'>
           <Link to='projects' smooth={true} duration={500}>Projects</Link>
+        </li>
+        <li className='px-4 cursor-pointer capitalize font-medium hover:text-secondary duration-200'>
+          <Link to='achievements' smooth={true} duration={500}>Achievements</Link>
         </li>
         <li className='px-4 cursor-pointer capitalize font-medium hover:text-secondary duration-200'>
           <Link to='contact' smooth={true} duration={500}>Contact</Link>
@@ -45,6 +48,9 @@ const Navbar = () => {
         </li>
         <li className='py-6 text-4xl'>
           <Link onClick={handleClick} to='projects' smooth={true} duration={500}>Projects</Link>
+        </li>
+        <li className='py-6 text-4xl'>
+          <Link onClick={handleClick} to='achievements' smooth={true} duration={500}>Achievements</Link>
         </li>
         <li className='py-6 text-4xl'>
           <Link onClick={handleClick} to='contact' smooth={true} duration={500}>Contact</Link>

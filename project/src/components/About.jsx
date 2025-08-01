@@ -4,18 +4,6 @@ import { MdEmail } from 'react-icons/md';
 import { BsTranslate, BsBriefcase } from 'react-icons/bs';
 
 const About = () => {
-  const skills = [
-    { icon: FaHtml5, name: 'HTML', color: '#E34F26' },
-    { icon: FaCss3Alt, name: 'CSS', color: '#1572B6' },
-    { icon: FaJs, name: 'JavaScript', color: '#F7DF1E' },
-    { icon: FaReact, name: 'React', color: '#61DAFB' },
-    { icon: SiTailwindcss, name: 'Tailwind CSS', color: '#38B2AC' },
-    { icon: FaNodeJs, name: 'Node.js', color: '#339933' },
-    { icon: SiExpress, name: 'Express.js', color: '#ffffff' },
-    { icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
-    { icon: FaGitAlt, name: 'Git', color: '#F05032' }
-  ];
-
   return (
     <div name='about' className='w-full section-min-height bg-primary text-lightText py-16 md:py-24'>
       <div className='max-w-[1200px] mx-auto px-4'>
@@ -71,7 +59,7 @@ const About = () => {
                   <p className='text-lg'>Anand Raj Bind</p>
                 </div>
               </div>
-              
+                
               {/* Location */}
               <div className='flex items-center gap-4'>
                 <div className='bg-red-500/20 p-3 rounded-full'>
@@ -122,24 +110,6 @@ const About = () => {
                 ✨ Open to opportunities ✨
               </p>
             </div>
-          </div>
-        </div>
-        
-        {/* Technologies Section */}
-        <div className='mt-16'>
-          <h3 className='text-2xl font-bold mb-8 border-l-4 border-green-500 pl-4'>
-            Technologies I Work With
-          </h3>
-          <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6'>
-            {skills.map((skill) => {
-              const IconComponent = skill.icon;
-              return (
-                <div key={skill.name} className='bg-tertiary p-6 rounded-xl flex flex-col items-center hover:scale-105 transition-transform'>
-                  <IconComponent className='w-12 h-12 mb-3' style={{ color: skill.color }} />
-                  <p>{skill.name}</p>
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>
