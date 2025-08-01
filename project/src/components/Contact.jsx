@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { MdEmail, MdSend } from 'react-icons/md';
 import { FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,10 +13,12 @@ const Contact = () => {
     message: ''
   });
   
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
   const [formCompletion, setFormCompletion] = useState(0);
   
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -31,18 +35,69 @@ const Contact = () => {
     setFormCompletion(Math.round((filledFields / fields.length) * 100));
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
-    setFormCompletion(0);
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setSubmitStatus({
+        success: false,
+        message: 'Please fill in all required fields'
+      });
+      return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setSubmitStatus({
+        success: false,
+        message: 'Please enter a valid email address'
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    // EmailJS configuration
+    // Replace these with your actual EmailJS credentials
+    const serviceId = 'YOUR_SERVICE_ID';
+    const templateId = 'YOUR_TEMPLATE_ID';
+    const publicKey = 'YOUR_PUBLIC_KEY';
+    
+    try {
+      const result = await emailjs.sendForm(
+        serviceId,
+        templateId,
+        form.current,
+        publicKey
+      );
+      
+      console.log('Email sent successfully:', result.text);
+      
+      setSubmitStatus({
+        success: true,
+        message: 'Your message has been sent successfully! I will get back to you soon.'
+      });
+      
+      // Reset the form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      setFormCompletion(0);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus({
+        success: false,
+        message: 'Failed to send message. Please try again or contact me directly via email.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -70,19 +125,19 @@ const Contact = () => {
               {/* Contact Cards */}
               <div className='space-y-4'>
                 {/* Email Card */}
-                <div className='bg-secondary rounded-xl p-4 flex items-start gap-4'>
+                <div className='bg-blue-500/20 rounded-xl p-4 flex items-start gap-4'>
                   <div className='bg-blue-500/20 p-3 rounded-full flex-shrink-0'>
                     <MdEmail className='text-blue-500 text-xl' />
                   </div>
                   <div>
                     <h4 className='font-bold'>Email</h4>
-                    <p className='text-blue-400'>spragyesh86@gmail.com</p>
+                    <p className='text-blue-400'>anandrajbind35@gmail.com</p>
                     <p className='text-sm text-gray-400 mt-1'>Best way to reach me</p>
                   </div>
                 </div>
                 
                 {/* Phone Card */}
-                <div className='bg-secondary rounded-xl p-4 flex items-start gap-4'>
+                <div className='bg-blue-500/20 rounded-xl p-4 flex items-start gap-4'>
                   <div className='bg-green-500/20 p-3 rounded-full flex-shrink-0'>
                     <FaPhone className='text-green-500 text-xl' />
                   </div>
@@ -94,7 +149,7 @@ const Contact = () => {
                 </div>
                 
                 {/* Location Card */}
-                <div className='bg-secondary rounded-xl p-4 flex items-start gap-4'>
+                <div className='bg-blue-500/20 rounded-xl p-4 flex items-start gap-4'>
                   <div className='bg-purple-500/20 p-3 rounded-full flex-shrink-0'>
                     <FaMapMarkerAlt className='text-purple-500 text-xl' />
                   </div>
@@ -114,26 +169,26 @@ const Contact = () => {
               </h3>
               
               <div className='flex flex-wrap gap-4'>
-                <a href="https://github.com/" target="_blank" rel="noopener noreferrer"
-                   className='bg-secondary hover:bg-secondary/80 p-4 rounded-xl flex flex-col items-center transition-colors'>
+                <a href="https://github.com/AnandRajBind" target="_blank" rel="noopener noreferrer"
+                   className='bg-blue-500/20 hover:bg-blue-500/30 p-4 rounded-xl flex flex-col items-center transition-colors'>
                   <FaGithub className='text-2xl mb-2' />
                   <span>GitHub</span>
                 </a>
                 
-                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer"
-                   className='bg-secondary hover:bg-secondary/80 p-4 rounded-xl flex flex-col items-center transition-colors'>
+                <a href="https://www.linkedin.com/in/anand-raj-bind-9b6890253/" target="_blank" rel="noopener noreferrer"
+                   className='bg-blue-500/20 hover:bg-blue-500/30 p-4 rounded-xl flex flex-col items-center transition-colors'>
                   <FaLinkedin className='text-2xl mb-2 text-blue-500' />
                   <span>LinkedIn</span>
                 </a>
                 
                 <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"
-                   className='bg-secondary hover:bg-secondary/80 p-4 rounded-xl flex flex-col items-center transition-colors'>
+                   className='bg-blue-500/20 hover:bg-blue-500/30 p-4 rounded-xl flex flex-col items-center transition-colors'>
                   <FaXTwitter className='text-2xl mb-2 text-gray-300' />
                   <span>X</span>
                 </a>
                 
                 <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer"
-                   className='bg-secondary hover:bg-secondary/80 p-4 rounded-xl flex flex-col items-center transition-colors'>
+                   className='bg-blue-500/20 hover:bg-blue-500/30 p-4 rounded-xl flex flex-col items-center transition-colors'>
                   <FaInstagram className='text-2xl mb-2 text-pink-500' />
                   <span>Instagram</span>
                 </a>
@@ -142,7 +197,7 @@ const Contact = () => {
           </div>
           
           {/* Right Column - Contact Form */}
-          <div className='bg-secondary p-8 rounded-2xl shadow-lg'>
+          <div className='bg-blue-500/20 p-8 rounded-2xl shadow-lg'>
             <div className='flex items-center justify-between mb-6'>
               <h3 className='text-2xl font-bold flex items-center gap-2'>
                 <MdSend className='text-blue-500' /> Send a Message
@@ -152,17 +207,30 @@ const Contact = () => {
               <div className='flex items-center gap-2'>
                 <div className='bg-gray-700 h-2 w-32 rounded-full overflow-hidden'>
                   <div 
-                    className='bg-blue-500 h-full rounded-full'
+                    className='bg-blue-500 h-full rounded-full transition-all duration-300'
                     style={{ width: `${formCompletion}%` }}
                   />
                 </div>
-                <span className='text-xs text-gray-400'>Form completion: {formCompletion}%</span>
+                <span className='text-xs text-gray-400'>{formCompletion}%</span>
               </div>
             </div>
             
-            <p className='text-gray-400 mb-6'>Share your details and let&apos;s start the conversation.</p>
+            <p className='text-gray-400 mb-6'>Share your details and let's start the conversation.</p>
             
-            <form onSubmit={handleSubmit}>
+            {/* Status Message */}
+            {submitStatus && (
+              <div className={`mb-6 p-4 rounded-lg ${
+                submitStatus.success ? 'bg-green-500/20 border border-green-500/30' : 'bg-red-500/20 border border-red-500/30'
+              }`}>
+                <p className={`text-sm ${
+                  submitStatus.success ? 'text-green-400' : 'text-red-400'
+                }`}>
+                  {submitStatus.message}
+                </p>
+              </div>
+            )}
+            
+            <form ref={form} onSubmit={handleSubmit}>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-6'>
                 {/* Name Input */}
                 <div>
@@ -176,7 +244,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className='w-full bg-tertiary border border-gray-700 rounded-lg p-3 focus:outline-none focus:border-blue-500'
+                    className='w-full bg-blue-500/10 border border-gray-700 rounded-lg p-3 focus:outline-none focus:border-blue-500'
                     placeholder='Your full name'
                   />
                 </div>
@@ -193,7 +261,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className='w-full bg-tertiary border border-gray-700 rounded-lg p-3 focus:outline-none focus:border-blue-500'
+                    className='w-full bg-blue-500/10 border border-gray-700 rounded-lg p-3 focus:outline-none focus:border-blue-500'
                     placeholder='your.email@example.com'
                   />
                 </div>
@@ -211,7 +279,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className='w-full bg-tertiary border border-gray-700 rounded-lg p-3 focus:outline-none focus:border-blue-500'
+                  className='w-full bg-blue-500/10 border border-gray-700 rounded-lg p-3 focus:outline-none focus:border-blue-500'
                   placeholder='Project inquiry, collaboration, or general question'
                 />
               </div>
@@ -228,7 +296,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className='w-full bg-tertiary border border-gray-700 rounded-lg p-3 focus:outline-none focus:border-blue-500'
+                  className='w-full bg-blue-500/10 border border-gray-700 rounded-lg p-3 focus:outline-none focus:border-blue-500'
                   placeholder='Tell me about your project, timeline, budget, and any specific requirements...'
                 />
               </div>
@@ -237,9 +305,19 @@ const Contact = () => {
               <div className='flex justify-center'>
                 <button 
                   type='submit' 
-                  className='flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 px-10 py-3 rounded-full transition-colors text-white font-medium'
+                  disabled={isSubmitting}
+                  className='flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 px-10 py-3 rounded-full transition-colors text-white font-medium disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-blue-500/20'
                 >
-                  Send Message <span className='text-lg'>✨</span>
+                  {isSubmitting ? (
+                    <>
+                      <span className="animate-spin h-5 w-5 mr-2 border-t-2 border-white rounded-full"></span>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      SEND MESSAGE <span className='text-lg'>⚡</span>
+                    </>
+                  )}
                 </button>
               </div>
             </form>
