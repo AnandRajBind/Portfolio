@@ -1,12 +1,19 @@
 import { useTypewriter, Cursor } from 'react-simple-typewriter';
 import { FaArrowRight, FaFileAlt } from 'react-icons/fa';
 import { Link } from 'react-scroll';
-import { useContext } from 'react';
+import { useContext, useCallback } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 
 const Hero = () => {
   const { isDarkMode } = useContext(ThemeContext);
   
+  // Initialize particle engine
+  const particlesInit = useCallback(async engine => {
+    await loadFull(engine);
+  }, []);
+
   const [typewriterText] = useTypewriter({
     words: [
       'Full Stack Developer',
@@ -22,8 +29,67 @@ const Hero = () => {
   });
 
   return (
-    <div name='home' className='w-full h-screen pt-[80px]'>
-      <div className='max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full'>
+    <div name='home' className='w-full h-screen pt-[80px] relative'>
+      {/* Particles Background */}
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        className="absolute inset-0"
+        options={{
+          fullScreen: { enable: false },
+          background: {
+            color: {
+              value: "transparent",
+            },
+          },
+          fpsLimit: 60,
+          particles: {
+            color: {
+              value: isDarkMode ? "#4B5563" : "#94a3b8",
+            },
+            links: {
+              color: isDarkMode ? "#3b82f6" : "#0ea5e9",
+              distance: 150,
+              enable: true,
+              opacity: 0.3,
+              width: 1,
+            },
+            collisions: {
+              enable: false,
+            },
+            move: {
+              direction: "none",
+              enable: true,
+              outModes: {
+                default: "bounce",
+              },
+              random: true,
+              speed: 0.8,
+              straight: false,
+            },
+            number: {
+              density: {
+                enable: true,
+                area: 800,
+              },
+              value: 40,
+            },
+            opacity: {
+              value: 0.3,
+            },
+            shape: {
+              type: "circle",
+            },
+            size: {
+              value: { min: 1, max: 3 },
+            },
+          },
+          detectRetina: true,
+        }}
+      />
+      
+      {/* Content */}
+      <div className='max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full relative z-10'>
         <div className='flex flex-col md:flex-row md:items-center'>
           <div className='md:w-2/3'>
             <p className='text-secondary sm:text-3xl '>Hi, My Name is</p>

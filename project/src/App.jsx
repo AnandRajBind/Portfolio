@@ -1,24 +1,22 @@
+import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ThemeToggle from './components/ThemeToggle';
 import ThemeProvider from './context/ThemeContext';
-import CreativeBackground from "./components/CreativeBackground";
-import FloatingElements from "./components/FloatingElements";
-import Skills from './components/Skills';
+import { HelmetProvider } from 'react-helmet-async';
+import SEO from './components/SEO';
 
-function App() {
+const App = () => {
   return (
-    <ThemeProvider>
-      <div className="app bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
-        <CreativeBackground />
-        <FloatingElements />
+    <HelmetProvider>
+      <ThemeProvider>
+        <SEO />
         <Navbar />
-        <ThemeToggle />
         <Hero />
         <About />
         <Skills />
@@ -26,9 +24,9 @@ function App() {
         <Achievements />
         <Contact />
         <Footer />
-      </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </HelmetProvider>
   );
-}
+};
 
 export default App;
