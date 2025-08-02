@@ -115,7 +115,7 @@ const Hero = () => {
                 </button>
               </Link>
               
-              <a href="https://drive.google.com/file/d/1t1jlmSJmndlF5dbNP49923NtAy5JAwb8/view?usp=drivesdk" 
+              <a href="https://drive.google.com/file/d/17M5FkMPw_uIElBzTNXa7nUibodtO42rV/view?usp=sharing" 
                 target="_blank" 
                 rel="noreferrer">
                 <button className='group text-primary border-2 px-6 py-3 my-2 flex items-center hover:bg-secondary hover:border-secondary'>

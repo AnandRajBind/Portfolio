@@ -23,8 +23,24 @@ const Achievements = () => {
       category: 'development',
       image: '/IBM.jpg' // Example image path
     },
-    {
+      {
       id: 3,
+      title: 'Merit Performance Award',
+      organization: 'Veer Bahadur Singh Purvanchal University',
+      date: 'April 2022',
+      category: 'community',
+      image: '/merit.jpg'
+    },
+    {
+      id: 4,
+      title: 'All India Online Aptitude Test',
+      organization: 'NCAT',
+      date: 'May 2025',
+      category: 'competition',
+      image: '/aptitude.jpg'
+    },
+    {
+      id: 5,
       title: 'Advance Java',
       organization: 'NS3EDU',
       date: 'Apriil 2025',
@@ -32,61 +48,47 @@ const Achievements = () => {
       image: '/advance java.jpg' // Example image path
     },
     {
-      id: 4,
-      title: 'Voational Training Core Java OOPS and DSA',
+      id: 6,
+      title: 'Vocational Training Core Java OOPS and DSA',
       organization: 'Kreativan Technologies',
       date: 'September 2024',
       category: 'development',
       image: '/core java.jpg' // Example image path
     },
     {
-      id: 5,
+      id: 7,
       title: 'How to Get Internship & 75% Schlorships on Three level Microsoft certification Programm',
       organization: 'Microsoft',
       date: 'March 2022',
       category: 'development',
       image: '/microsoft.jpg'
     },
+    
     {
-      id: 6,
-      title: 'All India Online Aptitude Test',
-      organization: 'NCAT',
-      date: 'May 2025',
-      category: 'academic',
-      image: '/aptitude.jpg'
-    },
-    {
-      id: 7,
+      id: 8,
       title: 'Participation in International Non-Violence Day and University Foundation Day Ceremony',
       organization: 'Veer Bahadur Singh Purvanchal University, Jaunpur',
       date: 'October 2023',
-      category: 'cultural',
+      category: 'community',
       image: '/ceremony.jpg'
-    },
-    {
-      id: 8,
-      title: 'Certificate of Appreciation',
-      organization: 'St. Andrews Institute of Technology & Management',
-      date: 'March 2025',
-      category: 'academic',
-      image: '/coding context.jpg'
     },
     {
       id: 9,
       title: 'Certificate of Appreciation',
       organization: 'St. Andrews Institute of Technology & Management',
-      date: 'April 2025',
-      category: 'academic',
-      image: '/innoviz.jpg'
+      date: 'March 2025',
+      category: 'competition',
+      image: '/coding context.jpg'
     },
     {
       id: 10,
-      title: 'Merit Performance Award',
-      organization: 'Veer Bahadur Singh Purvanchal University',
-      date: 'April 2022',
-      category: 'community',
-      image: '/merit.jpg'
+      title: 'Certificate of Appreciation',
+      organization: 'St. Andrews Institute of Technology & Management',
+      date: 'April 2025',
+      category: 'competition',
+      image: '/innoviz.jpg'
     },
+  
     {
       id: 11,
       title: 'Bapu Bazaar Samman Patra',
@@ -102,7 +104,41 @@ const Achievements = () => {
       date: 'December 2024',
       category: 'development',
       image: '/java programmin.jpg'
+    },
+    {
+      id: 13,
+      title: 'High School Marksheet',
+      organization: 'UP Board',
+      date: 'April 2018',
+      category: 'academic',
+      image: '/high school.jpg'
+    },
+    {
+      id: 14,
+      title: 'Intermediate Marksheet',
+      organization: 'UP Board',
+      date: 'June 2020',
+      category: 'academic',
+      image: '/intermediate.jpg'
+    },
+
+    {
+      id: 15,
+      title: 'Bachelor of Computer Applications (BCA) Final Semester Result',
+      organization: 'Veer Bahadur Singh Purvanchal University',
+      date: 'Sepetember 2024',
+      category: 'academic',
+      image: '/bca final semester.jpg'
+    },
+    {
+      id: 16,
+      title: 'Bachelor of Computer Applications (BCA)',
+      organization: 'Veer Bahadur Singh Purvanchal University',
+      date: 'Sepetember 2024',
+      category: 'academic',
+      image: '/BCA.jpg'
     }
+    
   ];
 
   // Filter certificates based on selected category
@@ -113,7 +149,7 @@ const Achievements = () => {
   // Limit displayed certificates unless showAll is true
   const displayedCertificates = showAll
     ? filteredCertificates
-    : filteredCertificates.slice(0, 4);
+    : filteredCertificates.slice(0, 6);
 
   const toggleShowAll = () => {
     setShowAll(!showAll);
