@@ -138,7 +138,6 @@ const Achievements = () => {
       category: 'academic',
       image: '/BCA.jpg'
     }
-    
   ];
 
   // Filter certificates based on selected category

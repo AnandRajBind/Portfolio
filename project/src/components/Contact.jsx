@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { MdEmail, MdSend } from 'react-icons/md';
 import { FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
@@ -62,9 +62,9 @@ const Contact = () => {
     
     // EmailJS configuration
     // Replace these with your actual EmailJS credentials
-    const serviceId = 'YOUR_SERVICE_ID';
-    const templateId = 'YOUR_TEMPLATE_ID';
-    const publicKey = 'YOUR_PUBLIC_KEY';
+    const serviceId = 'service_rdzr5mg';
+    const templateId = 'template_9l14hls';
+    const publicKey = 'bxhcg7JSRXKjJzubH';
     
     try {
       const result = await emailjs.sendForm(
