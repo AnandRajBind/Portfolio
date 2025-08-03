@@ -20,7 +20,7 @@ const Hero = () => {
       'MERN Stack Enthusiast',
       'Open Source Contributor',
       'React Developer',
-      'UI/UX Enthusiast'
+      'Node.js Developer',
     ],
     loop: true,
     delaySpeed: 2000,

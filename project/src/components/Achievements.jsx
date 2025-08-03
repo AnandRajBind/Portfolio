@@ -55,23 +55,23 @@ const Achievements = () => {
       category: 'development',
       image: '/core java.jpg' // Example image path
     },
-    {
-      id: 7,
-      title: 'How to Get Internship & 75% Schlorships on Three level Microsoft certification Programm',
-      organization: 'Microsoft',
-      date: 'March 2022',
-      category: 'development',
-      image: '/microsoft.jpg'
-    },
+    // {
+    //   id: 7,
+    //   title: 'How to Get Internship & 75% Schlorships on Three level Microsoft certification Programm',
+    //   organization: 'Microsoft',
+    //   date: 'March 2022',
+    //   category: 'development',
+    //   image: '/microsoft.jpg'
+    // },
     
-    {
-      id: 8,
-      title: 'Participation in International Non-Violence Day and University Foundation Day Ceremony',
-      organization: 'Veer Bahadur Singh Purvanchal University, Jaunpur',
-      date: 'October 2023',
-      category: 'community',
-      image: '/ceremony.jpg'
-    },
+    // {
+    //   id: 8,
+    //   title: 'Participation in International Non-Violence Day and University Foundation Day Ceremony',
+    //   organization: 'Veer Bahadur Singh Purvanchal University, Jaunpur',
+    //   date: 'October 2023',
+    //   category: 'community',
+    //   image: '/ceremony.jpg'
+    // },
     {
       id: 9,
       title: 'Certificate of Appreciation',
@@ -105,39 +105,39 @@ const Achievements = () => {
       category: 'development',
       image: '/java programmin.jpg'
     },
-    {
-      id: 13,
-      title: 'High School Marksheet',
-      organization: 'UP Board',
-      date: 'April 2018',
-      category: 'academic',
-      image: '/high school.jpg'
-    },
-    {
-      id: 14,
-      title: 'Intermediate Marksheet',
-      organization: 'UP Board',
-      date: 'June 2020',
-      category: 'academic',
-      image: '/intermediate.jpg'
-    },
+    // {
+    //   id: 13,
+    //   title: 'High School Marksheet',
+    //   organization: 'UP Board',
+    //   date: 'April 2018',
+    //   category: 'academic',
+    //   image: '/high school.jpg'
+    // },
+    // {
+    //   id: 14,
+    //   title: 'Intermediate Marksheet',
+    //   organization: 'UP Board',
+    //   date: 'June 2020',
+    //   category: 'academic',
+    //   image: '/intermediate.jpg'
+    // },
 
-    {
-      id: 15,
-      title: 'Bachelor of Computer Applications (BCA) Final Semester Result',
-      organization: 'Veer Bahadur Singh Purvanchal University',
-      date: 'Sepetember 2024',
-      category: 'academic',
-      image: '/bca final semester.jpg'
-    },
-    {
-      id: 16,
-      title: 'Bachelor of Computer Applications (BCA)',
-      organization: 'Veer Bahadur Singh Purvanchal University',
-      date: 'Sepetember 2024',
-      category: 'academic',
-      image: '/BCA.jpg'
-    }
+    // {
+    //   id: 15,
+    //   title: 'Bachelor of Computer Applications (BCA) Final Semester Result',
+    //   organization: 'Veer Bahadur Singh Purvanchal University',
+    //   date: 'Sepetember 2024',
+    //   category: 'academic',
+    //   image: '/bca final semester.jpg'
+    // },
+    // {
+    //   id: 16,
+    //   title: 'Bachelor of Computer Applications (BCA)',
+    //   organization: 'Veer Bahadur Singh Purvanchal University',
+    //   date: 'Sepetember 2024',
+    //   category: 'academic',
+    //   image: '/BCA.jpg'
+    // }
   ];
 
   // Filter certificates based on selected category

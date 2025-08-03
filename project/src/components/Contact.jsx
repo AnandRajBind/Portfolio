@@ -181,11 +181,11 @@ const Contact = () => {
                   <span>LinkedIn</span>
                 </a>
                 
-                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"
+                {/* <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"
                    className='bg-blue-500/20 hover:bg-blue-500/30 p-4 rounded-xl flex flex-col items-center transition-colors'>
                   <FaXTwitter className='text-2xl mb-2 text-gray-300' />
                   <span>X</span>
-                </a>
+                </a> */}
                 
                 <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer"
                    className='bg-blue-500/20 hover:bg-blue-500/30 p-4 rounded-xl flex flex-col items-center transition-colors'>
