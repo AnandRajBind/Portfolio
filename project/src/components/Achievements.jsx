@@ -1,9 +1,11 @@
-import  { useState } from 'react';
-import { FaStar } from 'react-icons/fa';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaTimes, FaEye, FaExternalLinkAlt, FaStar } from 'react-icons/fa';
 
 const Achievements = () => {
   const [filter, setFilter] = useState('all');
   const [showAll, setShowAll] = useState(false);
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
 
   // Certificate data with categories
   const certificates = [
@@ -13,7 +15,8 @@ const Achievements = () => {
       organization: 'Physics Wallah',
       date: 'November 2023',
       category: 'development',
-      image: '/MERN STACK.jpg' // Example image path
+      image: '/MERN STACK.jpg', // Example image path
+      description: 'Comprehensive full-stack web development certification covering React, Node.js, and modern web technologies.'
     },
     {
       id: 2,
@@ -21,15 +24,17 @@ const Achievements = () => {
       organization: 'IBM Skills Build',
       date: 'July 2025',
       category: 'development',
-      image: '/IBM.jpg' // Example image path
+      image: '/IBM.jpg', // Example image path
+      description: 'Advanced web development certification focusing on modern development practices and technologies.'
     },
-      {
+    {
       id: 3,
       title: 'Merit Performance Award',
       organization: 'Veer Bahadur Singh Purvanchal University',
       date: 'April 2022',
       category: 'community',
-      image: '/merit.jpg'
+      image: '/merit.jpg',
+      description: 'Recognition for outstanding academic performance and contribution to university activities.'
     },
     {
       id: 4,
@@ -37,15 +42,17 @@ const Achievements = () => {
       organization: 'NCAT',
       date: 'May 2025',
       category: 'competition',
-      image: '/aptitude.jpg'
+      image: '/aptitude.jpg',
+      description: 'National level aptitude test certification demonstrating analytical and problem-solving skills.'
     },
     {
       id: 5,
       title: 'Advance Java',
       organization: 'NS3EDU',
-      date: 'Apriil 2025',
+      date: 'April 2025',
       category: 'development',
-      image: '/advance java.jpg' // Example image path
+      image: '/advance java.jpg', // Example image path
+      description: 'Advanced Java programming certification covering enterprise-level development concepts.'
     },
     {
       id: 6,
@@ -53,7 +60,8 @@ const Achievements = () => {
       organization: 'Kreativan Technologies',
       date: 'September 2024',
       category: 'development',
-      image: '/core java.jpg' // Example image path
+      image: '/core java.jpg', // Example image path
+      description: 'Java programming certification covering core concepts and object-oriented programming.'
     },
     // {
     //   id: 7,
@@ -78,7 +86,8 @@ const Achievements = () => {
       organization: 'St. Andrews Institute of Technology & Management',
       date: 'March 2025',
       category: 'competition',
-      image: '/coding context.jpg'
+      image: '/coding context.jpg',
+      description: 'National level aptitude test certification demonstrating analytical and problem-solving skills.'
     },
     {
       id: 10,
@@ -86,7 +95,8 @@ const Achievements = () => {
       organization: 'St. Andrews Institute of Technology & Management',
       date: 'April 2025',
       category: 'competition',
-      image: '/innoviz.jpg'
+      image: '/innoviz.jpg',
+      description: 'Merit-based performance award for academic and technical excellence.'
     },
   
     {
@@ -95,7 +105,8 @@ const Achievements = () => {
       organization: 'Veer Bahadur Singh Purvanchal University',
       date: 'March 2023',
       category: 'community',
-      image: '/bapu bazar.jpg'
+      image: '/bapu bazar.jpg',
+      description: 'Certificate of appreciation for innovation and technology management excellence.'
     },
     {
       id: 12,
@@ -103,7 +114,8 @@ const Achievements = () => {
       organization: 'Great Learning',
       date: 'December 2024',
       category: 'development',
-      image: '/java programmin.jpg'
+      image: '/java programmin.jpg',
+      description: 'Java programming certification covering core concepts and object-oriented programming.'
     },
     // {
     //   id: 13,
@@ -152,6 +164,14 @@ const Achievements = () => {
 
   const toggleShowAll = () => {
     setShowAll(!showAll);
+  };
+
+  const openModal = (achievement) => {
+    setSelectedCertificate(achievement);
+  };
+
+  const closeModal = () => {
+    setSelectedCertificate(null);
   };
 
   return (
@@ -219,25 +239,64 @@ const Achievements = () => {
 
         {/* Certificates grid */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-          {displayedCertificates.map((cert) => (
-            <div
+          {displayedCertificates.map((cert, index) => (
+            <motion.div
               key={cert.id}
-              className='bg-tertiary rounded-2xl overflow-hidden shadow-lg transition-transform hover:scale-[1.02] border border-gray-800'
+              className="bg-blue-500/10 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group relative"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
             >
-              <div className='h-48 overflow-hidden relative'>
+              {/* Certificate Image */}
+              <div className="relative h-48 overflow-hidden">
                 <img
                   src={cert.image}
                   alt={cert.title}
-                  className='w-full h-full object-cover'
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/400x300/1e293b/64748b?text=Certificate';
+                  }}
                 />
-                <div className='absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end'>
-                  <div className='p-4 w-full'>
-                    <h3 className='text-xl font-bold text-white'>{cert.title}</h3>
-                    <p className='text-sm text-gray-300'>{cert.organization} • {cert.date}</p>
-                  </div>
+                
+                {/* Hover overlay with View Certificate button */}
+                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <motion.button
+                    onClick={() => openModal(cert)}
+                    className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg text-white font-medium transition-colors transform scale-90 group-hover:scale-100"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <FaEye size={16} />
+                    View Certificate
+                  </motion.button>
                 </div>
               </div>
-            </div>
+
+              {/* Certificate Info */}
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-secondary mb-2 line-clamp-2">
+                  {cert.title}
+                </h3>
+                <p className="text-blue-400 mb-1 font-medium">{cert.organization}</p>
+                <p className="text-gray-400 text-sm mb-3">{cert.date}</p>
+                <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+                  {cert.description}
+                </p>
+                
+                {/* View Certificate Button */}
+                <motion.button
+                  onClick={() => openModal(cert)}
+                  className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium w-full justify-center py-2 border border-blue-400/30 rounded-lg hover:bg-blue-500/10"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <FaExternalLinkAlt size={12} />
+                  View Full Certificate
+                </motion.button>
+              </div>
+            </motion.div>
           ))}
         </div>
 
@@ -265,6 +324,91 @@ const Achievements = () => {
           </div>
         )}
       </div>
+
+      {/* Enhanced Certificate Modal */}
+      <AnimatePresence>
+        {selectedCertificate && (
+          <motion.div
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeModal}
+          >
+            <motion.div
+              className="bg-white dark:bg-gray-800 rounded-lg max-w-5xl max-h-[95vh] overflow-hidden relative shadow-2xl"
+              initial={{ scale: 0.5, opacity: 0, rotateY: -15 }}
+              animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+              exit={{ scale: 0.5, opacity: 0, rotateY: 15 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 flex justify-between items-center">
+                <div>
+                  <h3 className="text-2xl font-bold">{selectedCertificate.title}</h3>
+                  <p className="text-blue-100 mt-1">
+                    {selectedCertificate.organization} • {selectedCertificate.date}
+                  </p>
+                </div>
+                <button
+                  onClick={closeModal}
+                  className="p-2 hover:bg-white/20 rounded-full transition-colors"
+                >
+                  <FaTimes size={24} />
+                </button>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-6 max-h-[calc(95vh-200px)] overflow-auto">
+                <div className="mb-4">
+                  <img
+                    src={selectedCertificate.image}
+                    alt={selectedCertificate.title}
+                    className="w-full h-auto rounded-lg shadow-lg border"
+                    onError={(e) => {
+                      e.target.src = 'https://via.placeholder.com/800x600/1e293b/64748b?text=Certificate+Not+Found';
+                    }}
+                  />
+                </div>
+                
+                <div className="text-gray-700 dark:text-gray-300">
+                  <h4 className="text-xl font-semibold mb-3 text-blue-600 dark:text-blue-400">
+                    Certificate Details
+                  </h4>
+                  <div className="space-y-2">
+                    <p><strong>Title:</strong> {selectedCertificate.title}</p>
+                    <p><strong>Organization:</strong> {selectedCertificate.organization}</p>
+                    <p><strong>Date:</strong> {selectedCertificate.date}</p>
+                    <p><strong>Category:</strong> {selectedCertificate.category}</p>
+                  </div>
+                  <div className="mt-4">
+                    <p><strong>Description:</strong></p>
+                    <p className="mt-2">{selectedCertificate.description}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="bg-gray-50 dark:bg-gray-700 p-6 flex justify-end gap-3">
+                <button
+                  onClick={closeModal}
+                  className="px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                >
+                  Close
+                </button>
+                <button
+                  onClick={() => window.open(selectedCertificate.image, '_blank')}
+                  className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center gap-2"
+                >
+                  <FaExternalLinkAlt size={16} />
+                  Open in New Tab
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

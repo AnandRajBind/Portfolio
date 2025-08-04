@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { MdEmail, MdSend } from 'react-icons/md';
 import { FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
+// import { FaXTwitter } from 'react-icons/fa6';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -143,7 +143,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className='font-bold'>Phone</h4>
-                    <p className='text-green-400'>+91 8726271088</p>
+                    <p className='text-green-400'>+91 7753847898</p>
                     <p className='text-sm text-gray-400 mt-1'>Available 9 AM - 6 PM IST</p>
                   </div>
                 </div>
@@ -187,11 +187,11 @@ const Contact = () => {
                   <span>X</span>
                 </a> */}
                 
-                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer"
+                {/* <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer"
                    className='bg-blue-500/20 hover:bg-blue-500/30 p-4 rounded-xl flex flex-col items-center transition-colors'>
                   <FaInstagram className='text-2xl mb-2 text-pink-500' />
                   <span>Instagram</span>
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
