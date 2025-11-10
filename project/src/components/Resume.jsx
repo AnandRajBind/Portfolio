@@ -3,8 +3,8 @@ import { FaDownload, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Resume = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const resumeUrl = "https://drive.google.com/file/d/1t1jlmSJmndlF5dbNP49923NtAy5JAwb8/view?usp=drivesdk";
-  const downloadUrl = "https://drive.google.com/file/d/1t1jlmSJmndlF5dbNP49923NtAy5JAwb8/view?usp=drivesdk";
+  const resumeUrl = "https://drive.google.com/file/d/1-D9CGYNcq4Fs93W3l6pmYXQRszeop8co/view?usp=sharing";
+  const downloadUrl = "https://drive.google.com/file/d/1-D9CGYNcq4Fs93W3l6pmYXQRszeop8co/view?usp=sharing";
   
   return (
     <div name="resume" className="w-full section-min-height bg-primary text-lightText section-padding">
