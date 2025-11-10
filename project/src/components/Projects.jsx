@@ -13,15 +13,24 @@ const Projects = () => {
       id: 1,
       title: "InternAuto",
       description: "Worked on the frontend of an internship application automation platform using React, incorporating web scraping, AI responses, career guidance, and resume generation.",
-      // image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       image: "project image/intern.png",
       github: "https://github.com/pragyesh7753/InternAuto_project",
       demo: "https://internauto.pragyesh.tech/",
       tags: ['React', 'AI Integration', 'Frontend'],
-      category: 'frontend'
+      category: 'fullStack'
     },
     {
       id: 2,
+      title: "CourseHeaven",
+      description:  "Built a fully functional e-commerce web application using React, JavaScript, NodeJs, ExpressJS and MongoDB enabling users to browse products, manage their cart, and securely place orders. Implemented  dynamic routing, and responsive UI for a seamless shopping experience.",
+      image: "project image/courseHeaven.png",
+      github: "https://github.com/AnandRajBind/E-Commerce-WebSite",
+      demo: "https://courseheaven-ashy.vercel.app/",
+      tags: ['React', 'JavaScript', 'NodeJs', "ExpressJs", "MongoDB"],
+      category: 'fullStack'
+    },
+    {
+      id: 3,
       title: "Password Manager",
       description: "Developed a Password Manager website that securely stores website URLs, usernames, and passwords, similar to Google Password Manager. User credentials are stored locally using Local Storage for quick access.",
       image: "project image/password.png ",
@@ -31,7 +40,7 @@ const Projects = () => {
       category: 'utility'
     },
     {
-      id: 3,
+      id: 4,
       title: "Employee Management",
       description: "Built an employee management system with local storage for data persistence. Created with HTML, CSS, JavaScript, ReactJS, and Vite.",
       image: "project image/employee.png",
@@ -41,7 +50,7 @@ const Projects = () => {
       category: 'frontend'
     },
     {
-      id: 4,
+      id: 5,
       title: "Number Guessing Game",
       description: "Interactive number guessing game built with JavaScript.",
       image: "project image/Number_Guessing.png",
@@ -51,7 +60,7 @@ const Projects = () => {
       category: 'games'
     },
     {
-      id: 5,
+      id: 6,
       title: "Snake Game",
       description: "Classic snake game implemented with JavaScript.",
       image: "project image/snake.png",
@@ -61,7 +70,7 @@ const Projects = () => {
       category: 'games'
     },
     {
-      id: 6,
+      id: 7,
       title: "To-Do List App",
       description: "Simple and effective to-do list application with task management features.",
       image: "project image/Todo.png",
@@ -75,6 +84,8 @@ const Projects = () => {
   const categories = [
     { id: 'all', name: 'ALL' },
     { id: 'frontend', name: 'FRONTEND' },
+    { id: 'backend', name: 'BACKEND' },
+    { id: 'fullStack', name: 'FULLSTACK' },
     { id: 'utility', name: 'UTILITY' },
     { id: 'games', name: 'GAMES' }
   ];
