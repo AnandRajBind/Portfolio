@@ -30,7 +30,25 @@ const Projects = () => {
       category: 'fullStack'
     },
     {
-      id: 3,
+  id: 3,
+  title: "XO Arena – Tic Tac Toe Game",
+  description: "A modern and interactive Tic Tac Toe game built with React, featuring clean UI, real-time game logic, responsive design, and an arena-style competitive experience. Focused on performance, reusability, and user-friendly gameplay.",
+  image: "project image/XOArena.jpeg",
+  github: "https://github.com/AnandRajBind/xo-arena",
+  demo: "https://xoarena.anandraj.tech/",
+  tags: [
+    'React',
+    'JavaScript',
+    'Game Development',
+    'State Management',
+    'UI/UX',
+    'Responsive Design'
+  ],
+  category: 'game'
+},
+
+    {
+      id: 4,
       title: "Password Manager",
       description: "Developed a Password Manager website that securely stores website URLs, usernames, and passwords, similar to Google Password Manager. User credentials are stored locally using Local Storage for quick access.",
       image: "project image/password.png ",
@@ -40,7 +58,7 @@ const Projects = () => {
       category: 'utility'
     },
     {
-      id: 4,
+      id: 5,
       title: "Employee Management",
       description: "Built an employee management system with local storage for data persistence. Created with HTML, CSS, JavaScript, ReactJS, and Vite.",
       image: "project image/employee.png",
@@ -50,7 +68,7 @@ const Projects = () => {
       category: 'frontend'
     },
     {
-      id: 5,
+      id: 6,
       title: "Number Guessing Game",
       description: "Interactive number guessing game built with JavaScript.",
       image: "project image/Number_Guessing.png",
@@ -60,7 +78,7 @@ const Projects = () => {
       category: 'games'
     },
     {
-      id: 6,
+      id: 7,
       title: "Snake Game",
       description: "Classic snake game implemented with JavaScript.",
       image: "project image/snake.png",
@@ -70,7 +88,7 @@ const Projects = () => {
       category: 'games'
     },
     {
-      id: 7,
+      id: 8,
       title: "To-Do List App",
       description: "Simple and effective to-do list application with task management features.",
       image: "project image/Todo.png",
