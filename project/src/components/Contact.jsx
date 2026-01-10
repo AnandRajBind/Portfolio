@@ -229,7 +229,6 @@ const Contact = () => {
                 </p>
               </div>
             )}
-            
             <form ref={form} onSubmit={handleSubmit}>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-6'>
                 {/* Name Input */}

@@ -12,7 +12,6 @@ const SEO = ({ title, description, name, type }) => {
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      
       {/* Twitter */}
       <meta name="twitter:creator" content={name} />
       <meta name="twitter:card" content="summary_large_image" />

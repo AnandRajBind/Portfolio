@@ -46,7 +46,6 @@ const Projects = () => {
   ],
   category: 'game'
 },
-
     {
       id: 4,
       title: "Password Manager",
@@ -98,7 +97,6 @@ const Projects = () => {
       category: 'utility'
     }
   ];
-
   const categories = [
     { id: 'all', name: 'ALL' },
     { id: 'frontend', name: 'FRONTEND' },
@@ -107,7 +105,6 @@ const Projects = () => {
     { id: 'utility', name: 'UTILITY' },
     { id: 'games', name: 'GAMES' }
   ];
-
   // Initialize filtered projects - simplified
   useEffect(() => {
     setFilteredProjects(projects);
@@ -115,7 +112,6 @@ const Projects = () => {
 
   const handleFilterChange = (category) => {
     setActiveFilter(category);
-    
     // Simplified animation logic - removed unnecessary timeout
     if (category === 'all') {
       setFilteredProjects(projects);
@@ -174,7 +170,6 @@ const Projects = () => {
                     filter: hoverIndex === index ? 'brightness(0.4)' : 'brightness(0.7)'
                   }}
                 />
-                
                 {/* Simplified hover overlay */}
                 {hoverIndex === index && (
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -183,12 +178,10 @@ const Projects = () => {
                   </div>
                 )}
               </div>
-
               {/* Project Content */}
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-[#00D1FF] dark:text-[#00D1FF]">{project.title}</h3>
                 <p className="text-gray-700 dark:text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
-                
                 {/* Project Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map(tag => (
@@ -197,7 +190,6 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-
                 {/* Project Links */}
                 <div className="flex justify-between mt-4 gap-4">
                   <a
@@ -228,5 +220,4 @@ const Projects = () => {
     </div>
   );
 };
-
 export default Projects;

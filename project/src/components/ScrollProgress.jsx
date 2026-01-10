@@ -10,11 +10,9 @@ const ScrollProgress = () => {
       const progress = (currentScroll / totalScroll) * 100;
       setScrollProgress(progress);
     };
-    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
   return (
     <div className="fixed top-0 left-0 right-0 h-1 z-50">
       <div 

@@ -13,7 +13,6 @@ const Resume = () => {
           <p className="text-4xl font-bold inline border-b-4 border-secondary">Resume</p>
           <p className="py-4">View or download my professional resume</p>
         </div>
-
         <div className="flex flex-col items-center mb-6">
           <div className="flex space-x-4 mb-6">
             <a 
@@ -34,7 +33,6 @@ const Resume = () => {
             </a>
           </div>
         </div>
-
         <div className="w-full bg-tertiary rounded-lg shadow-md overflow-hidden">
           {isLoading && (
             <div className="flex justify-center items-center h-[600px]">

@@ -81,7 +81,6 @@ const About = () => {
                   <p className='text-lg'>anandrajbind35@gmail.com</p>
                 </div>
               </div>
-              
               {/* Experience */}
               <div className='flex items-center gap-4'>
                 <div className='bg-yellow-500/20 p-3 rounded-full'>

@@ -135,12 +135,10 @@ const Skills = () => {
             </button>
           ))}
         </div>
-
         {/* Skills Grid */}
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>
           {filteredSkills.map(skill => {
             const IconComponent = skill.icon;
-
             return (
               <div
                 key={skill.id}
@@ -155,7 +153,6 @@ const Skills = () => {
                   className='w-16 h-16 mb-4 transition-all duration-300 group-hover:scale-110'
                   style={{ color: skill.color }}
                 />
-
                 <p className='text-lg font-medium'>{skill.name}</p>
 
                 {/* Skill Level */}
@@ -173,7 +170,6 @@ const Skills = () => {
                     data-width={`${skill.level}%`}
                   />
                 </div>
-
                 {/* Hover Tooltip */}
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 
                               bg-gray-800 text-white p-2 rounded text-sm w-48 opacity-0 
@@ -189,7 +185,6 @@ const Skills = () => {
           })}
         </div>
       </div>
-
       {/* Keyframes for skill bar animation */}
       <style jsx>{`
         @keyframes skillFill {
