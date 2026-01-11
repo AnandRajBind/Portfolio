@@ -34,7 +34,6 @@ const App = () => {
           img.onerror = resolve; // Continue even if an image fails
         });
       });
-      
       // Set a minimum loading time for better UX
       const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2800));
       

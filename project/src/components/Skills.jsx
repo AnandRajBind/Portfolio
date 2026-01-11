@@ -4,14 +4,12 @@ import { SiTailwindcss, SiMongodb, SiExpress } from 'react-icons/si';
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState('all');
-
   const categories = [
     { id: 'all', name: 'All' },
     { id: 'frontend', name: 'Frontend' },
     { id: 'backend', name: 'Backend' },
     { id: 'tools', name: 'Tools' }
   ];
-
   const skillsData = [
     {
       id: 1,
@@ -104,11 +102,9 @@ const Skills = () => {
       description: 'Version control system for code management'
     }
   ];
-
   const filteredSkills = activeCategory === 'all'
     ? skillsData
     : skillsData.filter(skill => skill.category === activeCategory);
-
   return (
     <div name='skills' className='w-full section-min-height bg-primary text-lightText section-padding'>
       {/* Container */}
@@ -148,13 +144,11 @@ const Skills = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 
                               rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
                 <IconComponent
                   className='w-16 h-16 mb-4 transition-all duration-300 group-hover:scale-110'
                   style={{ color: skill.color }}
                 />
                 <p className='text-lg font-medium'>{skill.name}</p>
-
                 {/* Skill Level */}
                 <div className="w-full mt-3 bg-gray-700 h-2 rounded-full overflow-hidden">
                   <div
@@ -191,7 +185,6 @@ const Skills = () => {
           from { width: 0%; }
           to { width: var(--skill-width); }
         }
-        
         [data-width] {
           --skill-width: attr(data-width);
         }
@@ -199,5 +192,4 @@ const Skills = () => {
     </div>
   );
 };
-
 export default Skills;
