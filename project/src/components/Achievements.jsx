@@ -33,7 +33,7 @@ const Achievements = () => {
       organization: 'Veer Bahadur Singh Purvanchal University',
       date: 'April 2022',
       category: 'community',
-      image: '/merit.jpg',
+      image: '/WHO.jpg',
       description: 'Recognition for outstanding academic performance and contribution to university activities.'
     },
     {
@@ -117,39 +117,6 @@ const Achievements = () => {
       image: '/java programmin.jpg',
       description: 'Java programming certification covering core concepts and object-oriented programming.'
     },
-    // {
-    //   id: 13,
-    //   title: 'High School Marksheet',
-    //   organization: 'UP Board',
-    //   date: 'April 2018',
-    //   category: 'academic',
-    //   image: '/high school.jpg'
-    // },
-    // {
-    //   id: 14,
-    //   title: 'Intermediate Marksheet',
-    //   organization: 'UP Board',
-    //   date: 'June 2020',
-    //   category: 'academic',
-    //   image: '/intermediate.jpg'
-    // },
-
-    // {
-    //   id: 15,
-    //   title: 'Bachelor of Computer Applications (BCA) Final Semester Result',
-    //   organization: 'Veer Bahadur Singh Purvanchal University',
-    //   date: 'Sepetember 2024',
-    //   category: 'academic',
-    //   image: '/bca final semester.jpg'
-    // },
-    // {
-    //   id: 16,
-    //   title: 'Bachelor of Computer Applications (BCA)',
-    //   organization: 'Veer Bahadur Singh Purvanchal University',
-    //   date: 'Sepetember 2024',
-    //   category: 'academic',
-    //   image: '/BCA.jpg'
-    // }
   ];
 
   // Filter certificates based on selected category
