@@ -31,6 +31,16 @@ const Projects = () => {
     },
     {
   id: 3,
+  title: "Task Management",
+   description: "Engineered a full-stack task management platform with secure user authentication and registration. Implemented CRUD operations using Express and MySQL (Railway), featuring smart task filtering, real-time status tracking, and an intuitive React-TypeScript interface. Delivers seamless task organization with pending-to-completed workflows, optimized for productivity and scalability.",
+  image: "project image/TaskManagement.jpeg",
+  github: "https://github.com/AnandRajBind/Task-Management",
+  demo: "https://taskmanagement-ebon.vercel.app/",
+  tags: ['React',"TypeScript", 'Express', 'CRUD', "MySQL", 'Vercel', "Railway", 'Task Tracking'],
+  category: 'fullStack'
+},
+    {
+  id: 4,
   title: "XO Arena – Tic Tac Toe Game",
   description: "A modern and interactive Tic Tac Toe game built with React, featuring clean UI, real-time game logic, responsive design, and an arena-style competitive experience. Focused on performance, reusability, and user-friendly gameplay.",
   image: "project image/XOArena.jpeg",
@@ -47,7 +57,7 @@ const Projects = () => {
   category: 'game'
 },
     {
-      id: 4,
+      id: 5,
       title: "Password Manager",
       description: "Developed a Password Manager website that securely stores website URLs, usernames, and passwords, similar to Google Password Manager. User credentials are stored locally using Local Storage for quick access.",
       image: "project image/password.png ",
@@ -57,7 +67,7 @@ const Projects = () => {
       category: 'utility'
     },
     {
-      id: 5,
+      id: 6,
       title: "Employee Management",
       description: "Built an employee management system with local storage for data persistence. Created with HTML, CSS, JavaScript, ReactJS, and Vite.",
       image: "project image/employee.png",
@@ -67,7 +77,7 @@ const Projects = () => {
       category: 'frontend'
     },
     {
-      id: 6,
+      id: 7,
       title: "Number Guessing Game",
       description: "Interactive number guessing game built with JavaScript.",
       image: "project image/Number_Guessing.png",
@@ -77,7 +87,7 @@ const Projects = () => {
       category: 'games'
     },
     {
-      id: 7,
+      id: 8,
       title: "Snake Game",
       description: "Classic snake game implemented with JavaScript.",
       image: "project image/snake.png",
@@ -87,7 +97,7 @@ const Projects = () => {
       category: 'games'
     },
     {
-      id: 8,
+      id: 9,
       title: "To-Do List App",
       description: "Simple and effective to-do list application with task management features.",
       image: "project image/Todo.png",
