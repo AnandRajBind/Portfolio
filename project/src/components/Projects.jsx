@@ -39,7 +39,7 @@ const Projects = () => {
   tags: ['React',"TypeScript", 'Express', 'CRUD', "MySQL", 'Vercel', "Railway", 'Task Tracking'],
   category: 'fullStack'
 },
-    {
+{
   id: 4,
   title: "XO Arena – Tic Tac Toe Game",
   description: "A modern and interactive Tic Tac Toe game built with React, featuring clean UI, real-time game logic, responsive design, and an arena-style competitive experience. Focused on performance, reusability, and user-friendly gameplay.",
