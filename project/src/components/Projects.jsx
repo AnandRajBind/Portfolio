@@ -15,7 +15,7 @@ const Projects = () => {
       description: "Worked on the frontend of an internship application automation platform using React, incorporating web scraping, AI responses, career guidance, and resume generation.",
       image: "project image/intern.png",
       github: "https://github.com/pragyesh7753/InternAuto_project",
-      demo: "https://internauto.pragyesh.tech/",
+      demo: "https://internauto.pragyesh.in/",
       tags: ['React', 'AI Integration', 'Frontend'],
       category: 'fullStack'
     },
