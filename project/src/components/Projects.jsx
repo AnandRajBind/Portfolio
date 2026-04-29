@@ -9,18 +9,9 @@ const Projects = () => {
   const [hoverIndex, setHoverIndex] = useState(null);
 
   const projects = [
+
     {
       id: 1,
-      title: "InternAuto",
-      description: "Worked on the frontend of an internship application automation platform using React, incorporating web scraping, AI responses, career guidance, and resume generation.",
-      image: "project image/intern.png",
-      github: "https://github.com/pragyesh7753/InternAuto_project",
-      demo: "https://internauto.pragyesh.tech/",
-      tags: ['React', 'AI Integration', 'Frontend'],
-      category: 'fullStack'
-    },
-    {
-      id: 2,
       title: "CourseHeaven",
       description:  "Built a fully functional e-commerce web application using React, JavaScript, NodeJs, ExpressJS and MongoDB enabling users to browse products, manage their cart, and securely place orders. Implemented  dynamic routing, and responsive UI for a seamless shopping experience.",
       image: "project image/courseHeaven.png",
@@ -30,7 +21,39 @@ const Projects = () => {
       category: 'fullStack'
     },
     {
-  id: 3,
+  id: 2,
+  title: "Perekrut AI – AI Interview Platform",
+  description: "Perekrut AI is a full-stack AI-powered interview platform that bridges the gap between interview preparation and hiring. It supports mock interviews for students and real-time AI-driven recruitment for organizations. The platform features dynamic question generation, intelligent answer evaluation, performance analytics dashboards, secure authentication, payment integration, and an advanced anti-cheating system to ensure interview integrity.",
+  image: "project image/Perekrut-ai.jpeg",
+  github: "https://github.com/AnandRajBind/Perekrut-ai",
+  demo: "https://perekrut-ai.vercel.app/",
+  tags: [
+    "React",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "AI Integration",
+    "Full Stack",
+    "Authentication",
+    "Real-time Video",
+    "Data Analytics",
+    "Security Features"
+  ],
+  category: "fullstack"
+},
+    {
+      id: 3,
+      title: "InternAuto",
+      description: "Worked on the frontend of an internship application automation platform using React, incorporating web scraping, AI responses, career guidance, and resume generation.",
+      image: "project image/intern.png",
+      github: "https://github.com/pragyesh7753/InternAuto_project",
+      demo: "https://internauto.pragyesh.tech/",
+      tags: ['React', 'AI Integration', 'Frontend'],
+      category: 'fullStack'
+    },
+    
+    {
+  id: 4,
   title: "Task Management",
    description: "Engineered a full-stack task management platform with secure user authentication and registration. Implemented CRUD operations using Express and MySQL (Railway), featuring smart task filtering, real-time status tracking, and an intuitive React-TypeScript interface. Delivers seamless task organization with pending-to-completed workflows, optimized for productivity and scalability.",
   image: "project image/TaskManagement.jpeg",
@@ -40,7 +63,7 @@ const Projects = () => {
   category: 'fullStack'
 },
 {
-  id: 4,
+  id: 5,
   title: "XO Arena – Tic Tac Toe Game",
   description: "A modern and interactive Tic Tac Toe game built with React, featuring clean UI, real-time game logic, responsive design, and an arena-style competitive experience. Focused on performance, reusability, and user-friendly gameplay.",
   image: "project image/XOArena.jpeg",
@@ -56,8 +79,9 @@ const Projects = () => {
   ],
   category: 'game'
 },
+
     {
-      id: 5,
+      id: 6,
       title: "Password Manager",
       description: "Developed a Password Manager website that securely stores website URLs, usernames, and passwords, similar to Google Password Manager. User credentials are stored locally using Local Storage for quick access.",
       image: "project image/password.png ",
@@ -67,7 +91,7 @@ const Projects = () => {
       category: 'utility'
     },
     {
-      id: 6,
+      id: 7,
       title: "Employee Management",
       description: "Built an employee management system with local storage for data persistence. Created with HTML, CSS, JavaScript, ReactJS, and Vite.",
       image: "project image/employee.png",
@@ -77,7 +101,7 @@ const Projects = () => {
       category: 'frontend'
     },
     {
-      id: 7,
+      id: 8,
       title: "Number Guessing Game",
       description: "Interactive number guessing game built with JavaScript.",
       image: "project image/Number_Guessing.png",
@@ -87,7 +111,7 @@ const Projects = () => {
       category: 'games'
     },
     {
-      id: 8,
+      id: 9,
       title: "Snake Game",
       description: "Classic snake game implemented with JavaScript.",
       image: "project image/snake.png",
@@ -97,7 +121,7 @@ const Projects = () => {
       category: 'games'
     },
     {
-      id: 9,
+      id: 10,
       title: "To-Do List App",
       description: "Simple and effective to-do list application with task management features.",
       image: "project image/Todo.png",
