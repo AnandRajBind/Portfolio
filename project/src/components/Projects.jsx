@@ -12,6 +12,16 @@ const Projects = () => {
 
     {
       id: 1,
+      title: "InternAuto",
+      description: "Worked on the frontend of an internship application automation platform using React, incorporating web scraping, AI responses, career guidance, and resume generation.",
+      image: "project image/intern.png",
+      github: "https://github.com/pragyesh7753/InternAuto_project",
+      demo: "https://internauto.pragyesh.tech/",
+      tags: ['React', 'AI Integration', 'Frontend'],
+      category: 'fullStack'
+    },
+    {
+      id: 2,
       title: "CourseHeaven",
       description:  "Built a fully functional e-commerce web application using React, JavaScript, NodeJs, ExpressJS and MongoDB enabling users to browse products, manage their cart, and securely place orders. Implemented  dynamic routing, and responsive UI for a seamless shopping experience.",
       image: "project image/courseHeaven.png",
