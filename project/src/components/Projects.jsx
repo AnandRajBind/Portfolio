@@ -31,7 +31,7 @@ const Projects = () => {
       category: 'fullStack'
     },
     {
-  id: 2,
+  id: 3,
   title: "Perekrut AI – AI Interview Platform",
   description: "Perekrut AI is a full-stack AI-powered interview platform that bridges the gap between interview preparation and hiring. It supports mock interviews for students and real-time AI-driven recruitment for organizations. The platform features dynamic question generation, intelligent answer evaluation, performance analytics dashboards, secure authentication, payment integration, and an advanced anti-cheating system to ensure interview integrity.",
   image: "project image/Perekrut-ai.jpeg",
@@ -51,16 +51,7 @@ const Projects = () => {
   ],
   category: "fullstack"
 },
-    {
-      id: 3,
-      title: "InternAuto",
-      description: "Worked on the frontend of an internship application automation platform using React, incorporating web scraping, AI responses, career guidance, and resume generation.",
-      image: "project image/intern.png",
-      github: "https://github.com/pragyesh7753/InternAuto_project",
-      demo: "https://internauto.pragyesh.tech/",
-      tags: ['React', 'AI Integration', 'Frontend'],
-      category: 'fullStack'
-    },
+  
     
     {
   id: 4,
