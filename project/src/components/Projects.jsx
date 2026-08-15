@@ -10,8 +10,20 @@ const Projects = () => {
 
   const projects = [
 
+{
+  id: 1,
+  title: "GourmetBite - Restaurant Menu Management System",
+  description: "Developed a full-stack restaurant menu management system with React, Node.js, Express, and MongoDB, featuring JWT authentication, role-based access control, menu and category management, image uploads, search, filtering, pagination, and Swagger API documentation.",
+  image: "project image/GourmetBite.png",
+  github: "https://github.com/AnandRajBind/restaurant-menu-app",
+  demo: "https://restaurant-menu-app-virid.vercel.app/",
+  tags: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Swagger'],
+  category: 'fullStack'
+},
+
+
     {
-      id: 1,
+      id: 2,
       title: "InternAuto",
       description: "Worked on the frontend of an internship application automation platform using React, incorporating web scraping, AI responses, career guidance, and resume generation.",
       image: "project image/intern.png",
@@ -21,7 +33,7 @@ const Projects = () => {
       category: 'fullStack'
     },
     {
-      id: 2,
+      id: 3,
       title: "CourseHeaven",
       description:  "Built a fully functional e-commerce web application using React, JavaScript, NodeJs, ExpressJS and MongoDB enabling users to browse products, manage their cart, and securely place orders. Implemented  dynamic routing, and responsive UI for a seamless shopping experience.",
       image: "project image/courseHeaven.png",
@@ -31,7 +43,7 @@ const Projects = () => {
       category: 'fullStack'
     },
     {
-  id: 3,
+  id: 4,
   title: "Perekrut AI – AI Interview Platform",
   description: "Perekrut AI is a full-stack AI-powered interview platform that bridges the gap between interview preparation and hiring. It supports mock interviews for students and real-time AI-driven recruitment for organizations. The platform features dynamic question generation, intelligent answer evaluation, performance analytics dashboards, secure authentication, payment integration, and an advanced anti-cheating system to ensure interview integrity.",
   image: "project image/Perekrut-ai.jpeg",
@@ -51,10 +63,19 @@ const Projects = () => {
   ],
   category: "fullstack"
 },
-  
+  {
+  id: 5,
+  title: "Accredian Enterprise",
+  description: "Developed a responsive enterprise upskilling and referral platform inspired by Accredian Enterprise, featuring customized learning programs, referral rewards, enterprise training capabilities, methodology, impact metrics, testimonials, FAQs, and corporate enquiry forms.",
+  image: "project image/accredian.png",
+  github: "AnandRajBind/accredian-enterprise-clone",
+  demo: "https://accredian-enterprise-clone-olive.vercel.app/",
+  tags: ['React', 'Tailwind CSS' , 'JavaScript', 'Responsive UI', 'Frontend'],
+  category: 'Frontend'
+},
     
     {
-  id: 4,
+  id: 6,
   title: "Task Management",
    description: "Engineered a full-stack task management platform with secure user authentication and registration. Implemented CRUD operations using Express and MySQL (Railway), featuring smart task filtering, real-time status tracking, and an intuitive React-TypeScript interface. Delivers seamless task organization with pending-to-completed workflows, optimized for productivity and scalability.",
   image: "project image/TaskManagement.jpeg",
@@ -64,7 +85,7 @@ const Projects = () => {
   category: 'fullStack'
 },
 {
-  id: 5,
+  id: 7,
   title: "XO Arena – Tic Tac Toe Game",
   description: "A modern and interactive Tic Tac Toe game built with React, featuring clean UI, real-time game logic, responsive design, and an arena-style competitive experience. Focused on performance, reusability, and user-friendly gameplay.",
   image: "project image/XOArena.jpeg",
@@ -82,7 +103,7 @@ const Projects = () => {
 },
 
     {
-      id: 6,
+      id: 8,
       title: "Password Manager",
       description: "Developed a Password Manager website that securely stores website URLs, usernames, and passwords, similar to Google Password Manager. User credentials are stored locally using Local Storage for quick access.",
       image: "project image/password.png ",
@@ -92,7 +113,7 @@ const Projects = () => {
       category: 'utility'
     },
     {
-      id: 7,
+      id: 9,
       title: "Employee Management",
       description: "Built an employee management system with local storage for data persistence. Created with HTML, CSS, JavaScript, ReactJS, and Vite.",
       image: "project image/employee.png",
@@ -102,7 +123,7 @@ const Projects = () => {
       category: 'frontend'
     },
     {
-      id: 8,
+      id: 10,
       title: "Number Guessing Game",
       description: "Interactive number guessing game built with JavaScript.",
       image: "project image/Number_Guessing.png",
@@ -112,7 +133,7 @@ const Projects = () => {
       category: 'games'
     },
     {
-      id: 9,
+      id: 11,
       title: "Snake Game",
       description: "Classic snake game implemented with JavaScript.",
       image: "project image/snake.png",
@@ -122,7 +143,7 @@ const Projects = () => {
       category: 'games'
     },
     {
-      id: 10,
+      id: 12,
       title: "To-Do List App",
       description: "Simple and effective to-do list application with task management features.",
       image: "project image/Todo.png",
